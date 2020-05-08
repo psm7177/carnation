@@ -1,125 +1,128 @@
 <html>
-    <head></head>
+    <head>
+        <style>
+            @font-face { font-family: 'Eoe_YE_M'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eight@1.0/Eoe_YE_M.woff') format('woff'); font-weight: normal; font-style: normal; }
+
+            html {
+                font-family: 'Eoe_YE_M', sans-serif;
+                background-color: #ebebeb;
+            }
+              
+    
+            .petal {
+                display: flex;
+                position: absolute;
+            }
+            .petal .body{
+                width: 200px;height: 300px;
+                border-bottom-left-radius: 30px 200px;
+                border-bottom-right-radius: 30px 200px;
+            }
+            .petal .asdf{
+                top:-2px;
+                width: 0;
+                height: 0;
+                margin: 0;
+                border-right: 20px solid transparent;
+                border-left: 20px solid transparent;
+                position: absolute;
+                top: -40px;
+            }
+    
+            .a {
+                box-shadow: 0px -18px 20px 0px #cb0707;
+            }
+            .a .body{
+                background-color: red;
+                border-bottom: 10px solid red;
+            }
+            .a .asdf{
+                border-bottom:40px solid red;
+            }
+    
+            .b {
+                box-shadow: 0px -18px 20px 0px #cb0707;
+            }
+            .b .body{
+                background-color: rgba(230, 0, 0, 1);
+                border-bottom: 10px solid rgba(230, 0, 0, 1);
+            }
+            .b .asdf{
+                border-bottom:40px solid rgba(230, 0, 0, 1);
+            }
+    
+            .c .body{
+                background-color: rgba(230, 0, 0, 1);
+                border-bottom: 10px solid rgba(230, 0, 0, 1);
+            }
+            .c .asdf{
+                border-bottom:40px solid rgba(230, 0, 0, 1);
+            }
+            .leaf{
+                position: absolute;
+                width: 100px; height: 100px;
+                background-color: #A0DE21; 
+                border-radius: 100px 0px;
+            }
+            .tag{
+                position: absolute;
+            }
+    
+            .band{
+                width:100px;
+                height:500px;
+                background-color:#006680;
+                display: flex;
+                justify-content: center;
+            }
+            .tail{
+                position:absolute;
+                width:0px;
+                height:0px;
+                padding: 0px;
+                margin:0px;
+                border-top:30px solid #006680;
+                border-bottom:30px solid transparent;
+            }
+            .left{
+                border-left:25px solid #006680;
+                border-right:25px solid  transparent;
+            }
+            .right{
+                left:50px;
+                border-left:25px solid transparent;
+                border-right:25px solid  #006680;
+            }
+            .content{
+                width:50px; 
+                padding-top:60px;
+                font-size:80px; 
+                color:#FFF; 
+                word-wrap: break-word; 
+                text-align:center;
+                padding-left:10px;
+                padding-right:10px;
+                border-left: 5px dashed white;
+                border-right: 5px dashed white;
+            }
+    
+            #canvas{
+                width: 100px;
+                margin: 0px auto;
+                position:relative;
+                left: -60px;
+            }
+
+            #phrase{
+                position:relative;
+                min-width: 600px;
+                margin: 0 auto;
+                top:600px;
+                text-align: center;
+            }
+        </style>
+    </head>
     <body onload="main()"></body>
-    <style>
-        @font-face {
-            font-family: 'namyang';
-            src:
-              url('https://psm7177.github.io/carnation/fonts/namyang B.tff')
-              format('ttf');
-            font-weight: bold;
-            font-style: normal;
-        }
-          
-          * {
-            font-family: 'namyang', sans-serif;
-          }
-          
-
-        .petal {
-            display: flex;
-            position: absolute;
-        }
-        .petal .body{
-            width: 200px;height: 300px;
-            border-bottom-left-radius: 30px 200px;
-            border-bottom-right-radius: 30px 200px;
-        }
-        .petal .asdf{
-            top:-2px;
-            width: 0;
-            height: 0;
-            margin: 0;
-            border-right: 20px solid transparent;
-            border-left: 20px solid transparent;
-            position: absolute;
-            top: -40px;
-        }
-
-        .a {
-            box-shadow: 0px -18px 20px 0px #cb0707;
-        }
-        .a .body{
-            background-color: red;
-            border-bottom: 10px solid red;
-        }
-        .a .asdf{
-            border-bottom:40px solid red;
-        }
-
-        .b {
-            box-shadow: 0px -18px 20px 0px #cb0707;
-        }
-        .b .body{
-            background-color: rgba(230, 0, 0, 1);
-            border-bottom: 10px solid rgba(230, 0, 0, 1);
-        }
-        .b .asdf{
-            border-bottom:40px solid rgba(230, 0, 0, 1);
-        }
-
-        .c .body{
-            background-color: rgba(230, 0, 0, 1);
-            border-bottom: 10px solid rgba(230, 0, 0, 1);
-        }
-        .c .asdf{
-            border-bottom:40px solid rgba(230, 0, 0, 1);
-        }
-        .leaf{
-            position: absolute;
-            width: 100px; height: 100px;
-            background-color: #A0DE21; 
-            border-radius: 100px 0px;
-        }
-        .tag{
-            position: absolute;
-        }
-
-        .band{
-            width:100px;
-            height:500px;
-            background-color:#006680;
-            display: flex;
-            justify-content: center;
-        }
-        .tail{
-            position:absolute;
-            width:0px;
-            height:0px;
-            padding: 0px;
-            margin:0px;
-            border-top:30px solid #006680;
-            border-bottom:30px solid transparent;
-        }
-        .left{
-            border-left:25px solid #006680;
-            border-right:25px solid  transparent;
-        }
-        .right{
-            left:50px;
-            border-left:25px solid transparent;
-            border-right:25px solid  #006680;
-        }
-        .content{
-            width:50px; 
-            padding-top:60px;
-            font-size:50px; 
-            color:#FFF; 
-            word-wrap: break-word; 
-            text-align:center;
-            padding-left:10px;
-            padding-right:10px;
-            border-left: 5px dashed white;
-            border-right: 5px dashed white;
-        }
-
-        #canvas{
-            width: 100px;
-            margin: 0px auto;
-            position:relative;
-            left: -60px;
-        }
-    </style>
     <script>
         const getRandomInt = (min, max) => {
             min = Math.ceil(min);
@@ -172,8 +175,14 @@
             html += bloom(10,0.08,"c");
             
             document.getElementById("canvas").innerHTML = html;
+
+            var content = [
+            '사랑으로 키워주셔서 감사합니다.',
+            '오래오래 함께해 주세요. 사랑합니다','자주 표현하지 못했지만 감사합니다','낳아 주신 은혜 꼭 보답하겠습니다. 존경합니다. 늘 건강하시고 행복하세요','커다란 나무처럼 항상 그 자리에 있기에 부모님의 소중함을 몰랐습니다. 부모님 사랑합니다' ];
+            document.getElementById('phrase').innerHTML = content[getRandomInt(0,content.length)];
         }
     </script>
     <div id="canvas"></div>
+    <div id="phrase" style="font-size:60px" onload="randomPhrases(this)"></div>
     </body>
 </html> 
